@@ -1,5 +1,4 @@
 import threading
-import locale
 import requests
 import urllib.parse
 from django.utils.timezone import localtime #type: ignore
