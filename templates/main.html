@@ -1,0 +1,27 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Template{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    {% block stylesheet %}{% endblock %}
+    <script src="{% static 'main/js/main.js' %}" async></script>
+    <script src="https://kit.fontawesome.com/85bf6ec9b6.js" crossorigin="anonymous"></script>
+    {% block javascript %}{% endblock %}
+</head>
+<body>
+    <div id="global-notification"></div>
+    <header>
+       <h1 class="website-logo"><a href="{% url 'scanner:index' %}">KOSCOPE</a></h1>
+       <nav>
+        <a href="{% url 'registros:index' %}">Registrar Alumno</a>
+        <a href="{% url 'estadisticas:index' %}">Estadisticas</a>
+       </nav>
+    </header>
+    <main>
+        <div class="sparkle-container"></div>
+        {% block container %} {% endblock %}
+    </main>
+</body>
+</html>

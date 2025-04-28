@@ -1,0 +1,56 @@
+{% extends "main.html" %}
+{% load static %}
+
+{%block title%}
+Estadisticas
+{%endblock%}
+
+{%block javascript%}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'estadisticas/js/index.js' %}"></script>
+{%endblock%}
+
+{%block container%}
+<div class="filtro-botones">
+    <a href="#" class="filtro-fecha" data-filtro="d">Hoy/Dia</a>
+    <a href="#" class="filtro-fecha" data-filtro="w">Semanal</a>
+    <a href="#" class="filtro-fecha" data-filtro="m">Mensual</a>
+</div>
+<div class="registro-total-datos">
+    <canvas id="registro-total-chart1"></canvas>
+    <div class="registro-info-block">
+        <h1>Entradas Registradas</h1>
+        <p id="registro-total-entrada"></p>
+    </div>
+    <div class="registro-info-block">
+        <h1>Salidas Registradas</h1>
+        <p id="registro-total-salida"></p>
+    </div>
+    <canvas id="registro-total-chart2"></canvas>
+</div>
+
+<div class="registro-genero-datos">
+    <canvas id="registro-genero-chart1"></canvas>
+    <div class="registro-info-block">
+        <h1>Entradas Registradas de Hombres</h1>
+        <p id="registro-genero-hombre-entrada"></p>
+    </div>
+    <div class="registro-info-block">
+        <h1>Entradas Registradas de Mujeres</h1>
+        <p id="registro-genero-mujer-entrada"></p>
+    </div>
+    <canvas id="registro-genero-chart2"></canvas>
+
+    <canvas id="registro-genero-chart3"></canvas>
+    <div class="registro-info-block">
+        <h1>Salidas Registradas de Hombres</h1>
+        <p id="registro-genero-hombre-salida"></p>
+    </div>
+    <div class="registro-info-block">
+        <h1>Salidas Registradas de Mujeres</h1>
+        <p id="registro-genero-mujer-salida"></p>
+    </div>
+    <canvas id="registro-genero-chart4"></canvas>
+</div>
+
+{% endblock %}

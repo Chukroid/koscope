@@ -1,0 +1,78 @@
+{% extends "main.html" %}
+{% load static %}
+
+{%block title%}
+Asistencia
+{%endblock%}
+
+{%block stylesheet%}
+<link rel="stylesheet" href="{% static 'scanner/css/index.css' %}">
+{%endblock%}
+{%block javascript%}
+<script src="{% static 'scanner/js/index.js' %}"></script>
+{%endblock%}
+
+{%block container%}
+<div id="modal-container" class="modal-hide">
+    <div id="modal-main-container">
+        <img id="modal-imagen" src="${data.alumno.imagen_alumno}">
+        <div class="modal-info">
+            <div class="modal-info-box">
+                <p>Nombre completo:</p>
+                <span id="modal-nombre">Kossy Emmanuel Diego Chukwudebelu</span>
+            </div>
+            <div class="modal-info-box">
+                <p>Matricula:</p>
+                <span id="modal-matricula">DEDASD43</span>
+            </div>
+            <div class="modal-info-box">
+                <p>Genero:</p>
+                <span id="modal-genero">Hombre</span>
+            </div>
+            <div class="modal-info-box">
+                <p>Grado:</p>
+                <span id="modal-grado">1</span>
+            </div>
+            <div class="modal-info-box">
+                <p>Grupo:</p>
+                <span id="modal-grupo">B</span>
+            </div>
+            <p id="modal-salida" class="hidden">Salida Registrada: 23:30 AM</p>
+            <p id="modal-entrada">Entrada Registrada: 23:30 AM</p>
+        </div>
+        <button id="modal-close-btn">X</button>
+    </div>
+</div>
+
+<div class="scanner-container">
+    <div class="modo">
+        <input id="scanner-modo"type="checkbox">
+        <label for="scanner-modo">
+            <p class="modo-e"><strong>REGISTRAR ENTRADA</strong></p>
+            <p class="modo-s"><strong>REGISTRAR SALIDA</strong></p>
+        </label>
+    </div>
+    <h1 class="titulo">
+        Administracion y Control de Asistencias 
+    </h1>
+    <div class="descripcion">
+        <p>Por favor, acerca tu credencial al lector para que podamos escanear tu código QR y registrar tu entrada o salida.</p>
+        <p>Asegurar que tengas el modo de scaneo seleccionado correctamente.</p>
+    </div>
+    <div class="scanner">
+        <div class="scanner-icono">
+            <img src="{% static '/imagenes/scannericono.png' %}" alt="">
+            <p>Scaneando. . .</p>
+            <form id="scan-matricula-form" action="">
+                <input id="scan-matricula-form-input" type="text" placeholder="ESPERANDO MATRICULA. . ." autofocus>
+                <input type="submit">
+            </form>
+        </div>
+        <div id="force-registro-form">
+            <input id="force-registro" type="checkbox">
+            <label for="force-registro"><i>Activa para deshabilitar restricciones de registro</i></label>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

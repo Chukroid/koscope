@@ -1,0 +1,36 @@
+{% extends "main.html" %}
+{% load static %}
+
+{%block title%}
+Agregar Alumno
+{%endblock%}
+
+{%block stylesheet%}
+<link rel="stylesheet" href="{% static 'registros/css/index.css' %}">
+{%endblock%}
+{%block javascript%}
+<script src="{% static 'registros/js/index.js' %}"></script>
+{%endblock%}
+
+{%block container%}
+<div class="registro-container">
+    <p id="registro-desc">
+        Llenar los datos pedido del Alumno y sus tutores para registrar el alumno
+    </p>
+    <form class="registro-form-container" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-seperator">
+            <div class="form-alumno">
+                <h1 class="form-section-title">Datos de Alumno</h1>
+                {{form.alumnoform.as_p}}
+            </div>
+            <div class="form-tutor">
+                <h1 class="form-section-title">Datos de Tutor</h1>
+                {{form.tutorform.as_p}}
+            </div>
+        </div>
+    
+        <input type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}

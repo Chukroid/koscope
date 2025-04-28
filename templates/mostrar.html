@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{%block title%}
+Datos del Alumno
+{%endblock%}
+{%block container%}
+
+{% if sub_info %}
+  <p><strong>{{ sub_info.mensaje }}</strong></p>
+{% endif %}
+
+<p>{{ alumno.id_alumno }}</p>
+<p>{{ alumno.matricula }}</p>
+<p>{{ alumno.nombre }}</p>
+<p>{{ alumno.apellido_paterno }}</p>
+<p>{{ alumno.apellido_materno }}</p>
+<p>{{ alumno.genero }}</p>
+<p>{{ alumno.grado }}</p>
+<p>{{ alumno.grupo }}</p>
+<p>{{ alumno.telefono }}</p>
+<p>{{ alumno.correo_electronico }}</p>
+
+{% if alumno.imagen_alumno %}
+<img src="{{ alumno.imagen_alumno.url }}" alt="Alumno Image" width="100" />
+{% else %}
+No image uploaded
+{% endif %}
+
+<h3>QR Code for Matricula</h3>
+<img src="{{ alumno.qr_code.url }}" alt="QR Code">
+
+<a href="{% url 'scanner:index' %}">
+    <button>Regresar al inicio</button>
+</a>
+
+{% endblock %}
