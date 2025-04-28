@@ -1,5 +1,4 @@
 import threading
-import locale
 import requests
 import urllib.parse
 from django.utils.timezone import localtime #type: ignore
@@ -12,7 +11,6 @@ from django.forms.models import model_to_dict # type: ignore
 from django.core.mail import send_mail #type: ignore
 from twilio.rest import Client
 
-locale.setlocale(locale.LC_ALL, 'C')
 account_sid = config('TWILIO_SID')
 auth_token = config('TWILIO_AUTH_TOKEN')
 client = Client(account_sid, auth_token)
