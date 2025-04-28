@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="alumno",
             name="id_alumno",
-            field=models.BigAutoField(default="", primary_key=True, serialize=False),
+            field=models.BigAutoField(primary_key=True, serialize=False),
         ),
     ]
