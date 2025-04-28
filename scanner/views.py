@@ -12,7 +12,7 @@ from django.forms.models import model_to_dict # type: ignore
 from django.core.mail import send_mail #type: ignore
 from twilio.rest import Client
 
-locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8') # para cambiar el local a español (como los meses y dias)
+#locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8') # para cambiar el local a español (como los meses y dias)
 account_sid = config('TWILIO_SID')
 auth_token = config('TWILIO_AUTH_TOKEN')
 client = Client(account_sid, auth_token)
