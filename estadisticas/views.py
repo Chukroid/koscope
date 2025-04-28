@@ -6,9 +6,6 @@ from django.db.models.functions import TruncDay,TruncWeek, TruncMonth
 from django.db.models import Count
 from datetime import timedelta
 from django.utils.timezone import localtime
-import locale
-
-locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8') # para cambiar el local a español (como los meses y dias)
 
 # Charts
 # hoy (per dia)
