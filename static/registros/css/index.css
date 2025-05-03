@@ -13,7 +13,7 @@
     margin-top: 2em;
 }
 .form-section-title{
-    color: var(--text-color2);
+    color: var(--accent-color-dark);
     font-size: 1em;
     text-transform: uppercase;
     opacity: 0.8;
@@ -24,7 +24,7 @@
         url("/static/imagenes/pattern1.png");
     background-color: white;
     padding: 3em;
-    border-radius: 1em;
+    border-radius: 0.5em;
     box-shadow: 0 0 0.5em white;
     display: flex;
     justify-content: center;
@@ -42,6 +42,10 @@
     justify-content: center;
     align-items: center;
 }
+
+.form-seperator p input[type=text],input[type=number],input[type=file],select{
+    outline: none;
+}
 .form-seperator p input[type=text],input[type=number] {
     position: relative;
     font-size: 0.8em;
@@ -51,14 +55,15 @@
     border: none;
     padding: 0.8em 1.5em;
     border-radius: 0.2em;
-    margin: 0.3em 0;
+    margin: 0.35em 0;
+    outline: none;
 }
 .form-seperator p input[type=text]:focus,
 input[type=text]:valid,
 input[type=number]:focus,
-input[type=number]:focus {
-    background-color: #d9d9d9;
+input[type=number]:valid {
     transition: all 0.2s;
+    border: 2px solid var(--accent-color);
 }
 .registro-form-container p label {
     position: absolute;
@@ -89,7 +94,34 @@ input[type=number]:focus {
     margin: 0.3em 0;
     display: flex;
 }
+.form-seperator p input[type=file]:focus {
+    border: 2px solid var(--accent-color);
+}
 .form-seperator p select:invalid {
     text-transform: uppercase;
     color: var(--text-color2);
+}
+.form-seperator p select:focus{
+    border: 2px solid var(--accent-color);
+}
+
+.registro-form-container input[type=submit]{
+    appearance: none;
+    border: 0;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 0.7em 1em;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 0.3em;
+    border-radius: 0.2em;
+    box-shadow: 0 0 0.5em rgba(0, 0, 0,0.2);
+    cursor: pointer;
+    margin-top: 1em;
+    transition: all 0.2s ease;
+}
+.registro-form-container input[type=submit]:hover{
+    background-color: var(--accent-color-dark);
+    transform: scale(1.01);
+    transition: all 0.2s;
 }
