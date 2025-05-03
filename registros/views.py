@@ -36,3 +36,6 @@ def mostrar(request,alumno_id):
         'alumno': alumno,
         'sub_info': sub_info
     })
+
+def panel(request):
+    return render(request,'dashboard.html')

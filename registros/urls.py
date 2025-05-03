@@ -6,4 +6,5 @@ app_name = 'registros'
 urlpatterns = [
     path("", views.agregar, name="index"),
     path("alumno/<int:alumno_id>/", views.mostrar, name="Alumno"),
+    path("panel", views.panel, name="panel"),
 ]
