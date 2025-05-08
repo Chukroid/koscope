@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse, get_object_or_404 # type: ignore
-from .models import Alumno
+from .models import Alumno,Tutor
 from django.contrib.auth.forms import UserCreationForm # type: ignore
 from .registroForm import AlumnoRegistrationForm,TutorRegistroForm,RegistrationForm
 
@@ -30,10 +30,12 @@ def agregar(request):
 
 def mostrar(request,alumno_id):
     alumno = get_object_or_404(Alumno, pk=alumno_id)
+    tutor = Tutor.objects.filter(matriculo_alumno=alumno.matricula).first()
     sub_info = request.session.pop('sub_info', None)  # gets and removes it
 
     return render(request, 'mostrar.html', {
         'alumno': alumno,
+        'tutor': tutor,
         'sub_info': sub_info
     })
 

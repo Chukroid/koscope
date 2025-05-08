@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const selects = document.querySelectorAll('.form-seperator p select');
     const inputFiles = document.querySelectorAll('.form-seperator p input[type=file]');
 
+    const descargarCredencial = document.getElementById("credencial-descargar");
+    const credencialVista = document.getElementsByClassName("credencial")[0];
+
     inputs.forEach(input => {
         input.addEventListener('focus', () => {
             input.parentElement.classList.add('focused');
@@ -22,4 +25,18 @@ document.addEventListener("DOMContentLoaded", function () {
     inputFiles.forEach(inputfile => {
         inputfile.previousElementSibling.style.display = 'none';
     });
+
+    descargarCredencial.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        html2canvas(credencialVista, {
+            scale: 2, // Increases quality
+            useCORS: true // Enables cross-origin images (if needed)
+          }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'credencial.png';
+            link.href = canvas.toDataURL();
+            link.click();
+          });
+    })
 })

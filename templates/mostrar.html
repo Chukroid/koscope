@@ -1,35 +1,94 @@
 {% extends "main.html" %}
+{% load static %}
+
 {%block title%}
 Datos del Alumno
 {%endblock%}
+{%block stylesheet%}
+<link rel="stylesheet" href="{% static 'registros/css/mostrar.css' %}">
+{%endblock%}
+{%block javascript%}
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="{% static 'registros/js/index.js' %}"></script>
+{%endblock%}
+
+
 {%block container%}
 
 {% if sub_info %}
   <p><strong>{{ sub_info.mensaje }}</strong></p>
 {% endif %}
 
-<p>{{ alumno.id_alumno }}</p>
-<p>{{ alumno.matricula }}</p>
-<p>{{ alumno.nombre }}</p>
-<p>{{ alumno.apellido_paterno }}</p>
-<p>{{ alumno.apellido_materno }}</p>
-<p>{{ alumno.genero }}</p>
-<p>{{ alumno.grado }}</p>
-<p>{{ alumno.grupo }}</p>
-<p>{{ alumno.telefono }}</p>
-<p>{{ alumno.correo_electronico }}</p>
+<div id="credencial-container">
+  <div class="credencial">
+    {% if alumno.imagen_alumno %}
+    <img class="credencial-foto" src="{{ alumno.imagen_alumno.url }}" alt="Alumno Image"/>
+    {% else %}
+    <img class="credencial-foto" src="{% static 'imagenes/empty-profile.webp' %}" alt="Alumno Image"/>
+    {% endif %}
 
-{% if alumno.imagen_alumno %}
-<img src="{{ alumno.imagen_alumno.url }}" alt="Alumno Image" width="100" />
-{% else %}
-No image uploaded
-{% endif %}
+    <p id="credencial-nombre">{{ alumno.nombre }} {{ alumno.apellido_paterno }} {{ alumno.apellido_materno|default:""}}</p>
+    <div class="credencial-box">
+      <p>Grado:</p>
+      <span>{{alumno.grado}}</span>
+    </div>
+    <div class="credencial-box">
+      <p>Grupo:</p>
+      <span>{{alumno.grupo}}</span>
+    </div>
 
-<h3>QR Code for Matricula</h3>
-<img src="{{ alumno.qr_code.url }}" alt="QR Code">
+    <img id="credencial-qr" src="{{ alumno.qr_code.url }}" alt="QR Code">
+    <p id="credencial-matricula">{{ alumno.matricula }}</p>
+  </div>
 
-<a href="{% url 'scanner:index' %}">
-    <button>Regresar al inicio</button>
-</a>
+  <div id="credencial-datos-container">
+    <div id="credencial-datos">
+
+      <div class="credencial-dato-box">
+        <p>Matricula:</p>
+        <span>{{ alumno.matricula }}</span>
+      </div>
+      <div class="credencial-dato-box">
+        <p>Nombre Completo:</p>
+        <span>{{ alumno.nombre }} {{ alumno.apellido_paterno }} {{ alumno.apellido_materno|default:""}}</span>
+      </div>
+      <div class="credencial-dato-box">
+        <p>Genero:</p>
+        <span>
+          {% if alumno.genero == 'H' %}
+            Hombre
+          {% else %}
+            Mujer
+          {% endif %}
+        </span>
+      </div>
+      <div class="credencial-dato-box">
+        <p>Grupo:</p>
+        <span>{{ alumno.grado }} - {{ alumno.grupo }}</span>
+      </div>
+      <div class="credencial-dato-box">
+        <p>Telefono del Almuno:</p>
+        <span>{{ alumno.telefono }}</span>
+      </div>
+      <div class="credencial-dato-box">
+        <p>Correo del Almuno:</p>
+        <span>{{ alumno.correo_electronico }}</span>
+      </div>
+      <div class="credencial-dato-box">
+        <p>Telefono del Tutor:</p>
+        <span>{{ tutor.telefono_tutor }}</span>
+      </div>
+      <div class="credencial-dato-box">
+        <p>Correo del Tutor:</p>
+        <span>{{ tutor.correo_electronico_tutor }}</span>
+      </div>
+
+    </div>
+    <div id="credencial-botones">
+      <a id="credencial-descargar"><i class="fa-solid fa-download"></i>Descargar</a>
+      <a id="credencial-regresar" href="{% url 'registros:index' %}"><i class="fa-solid fa-user-plus"></i>Agregar Alumno</a>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
