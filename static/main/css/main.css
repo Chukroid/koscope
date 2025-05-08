@@ -8,7 +8,9 @@
 :root {
     --text-color1: #e3e3e3;
     --text-color2: #8b8b8b;
+    --text-color3: #dbd8d8;
 
+    --accent-color-light: #ce8aff;
     --accent-color: #bd60ff;
     --accent-color-dark: #8a0ee3;
 
@@ -33,10 +35,6 @@ header {
     font-size: 1rem;
     color: var(--text-color1);
     justify-content: space-between;
-
-    transform: translateY(20px);
-    opacity: 0;
-    animation: entrada 0.5s ease-out forwards;
 }
 .website-logo a {
     text-decoration: none;
@@ -65,12 +63,6 @@ nav a:hover {
     color: var(--text-color1);
 }
 
-@keyframes entrada {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 body{
     background: url("/static/imagenes/15517704_5630939.jpg");
